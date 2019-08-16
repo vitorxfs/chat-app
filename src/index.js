@@ -17,6 +17,11 @@ io.on('connection', (socket) => {
 
     socket.broadcast.emit('message', 'A new user has joined!');
 
+    socket.on('sendLocation', ({ latitude:lat, longitude:long }) => {
+        socket.broadcast.emit('location', `https://google.com/maps?q=${lat},${long}`);
+    });
+    
+
     socket.on('sendMessage', (message) => {
         io.emit('message', message);
     });
