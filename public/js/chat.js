@@ -19,15 +19,17 @@ const locationURLTemplate = document.querySelector('#location-url-template').inn
 socket.on('message', (message) => {
     console.log(message);
     const html = Mustache.render(messageTemplate, {
-        message
+        message : message.text,
+        createdAt: moment(message.createdAt).format('H:mm')
     });
     $messages.insertAdjacentHTML('beforeend', html);
 });
 
-socket.on('location', (url) => {
-    console.log(url);
+socket.on('location', (message) => {
+    console.log(message);
     const html = Mustache.render(locationURLTemplate, {
-        url
+        url: message.url,
+        createdAt: moment(message.createdAt).format('H:mm')
     });
     $messages.insertAdjacentHTML('beforeend', html);
 });
