@@ -2,25 +2,52 @@
 <html>
 <head>
     <title>Chat App</title>
+    <link rel="icon" href="/img/favicon.png">
+    <link rel="stylesheet" href="/css/styles.min.css">
 </head>
 <body>
-    <h1>Chat App</h1>
 
-    <div id="messages"></div>
+    <div class="chat">
+        <div class="chat__sidebar">
 
-    <form id="message-form">
-        <input name="message" placeholder="Type here your message." />
-        <button>Send</button>
-    </form>
+        </div>
+        <div class="chat__main">
+            <div id="messages" class="chat__messages"></div>
 
-    <button id="send-location">Send Location</button>
+            <div class="compose">
+                <form id="message-form">
+                    <input name="message" placeholder="Type here your message." />
+                    <button>Send</button>
+                </form>
+                        
+                <button id="send-location">Send Location</button>
+            </div>
+
+            
+        </div>
+    </div>
+
+
 
     
     <script id="message-template" type="text/html">    
-        <div><p>{{ createdAt }} - {{ message }}</p></div>
+        <div class="message">
+            <p>
+                <span class="message__name">Some UserName</span>
+                <span class="message__meta">{{createdAt}}</span>
+            </p>
+            <p>{{ message }}</p>
+        </div>
     </script>
+
     <script id="location-url-template" type="text/html">    
-        <div>{{ createdAt }} - <a href="{{url}}" target="_blank">My Location</p></div>
+        <div class="message">
+            <p>
+                <span class="message__name">Some UserName</span>
+                <span class="message__meta">{{createdAt}}</span>
+            </p>
+            <p><a href="{{url}}" target="_blank">My Location</a></p>
+        </div>
     </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
